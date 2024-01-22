@@ -9,9 +9,6 @@ import AccountArtifact from "../artifacts/Account";
 export async function main (atlas: AtlasEnvironment) {
   // @ts-ignore target zkSyncTestnet in config file which can be testnet or local
   const provider = new Web3Provider(atlas.provider);
-  if((await provider.getNetwork()).chainId !== 280) {
-      throw new Error("Must be connected to zkSync Testnet within Atlas");
-  }
   const wallet = provider.getSigner();
 
   const factory = new ContractFactory(
